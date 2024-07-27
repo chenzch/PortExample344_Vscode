@@ -1,0 +1,33 @@
+{
+    "env": {
+        "MCAL_DIR": "d:/NXP/AUTOSAR/SW32K3_S32M27x_RTD_4.4_4.0.0_P24",
+        "PLUGINS_DIR": "${MCAL_DIR}/eclipse/plugins",
+        "AR_PKG_NAME":"TS_T40D34M40I0R0"
+    },
+    "configurations": [
+        {
+            "name": "ARMGCC",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/generate/include",
+                "${PLUGINS_DIR}/BaseNXP_${AR_PKG_NAME}/header",
+                "${PLUGINS_DIR}/BaseNXP_${AR_PKG_NAME}/include",
+                "${PLUGINS_DIR}/Platform_${AR_PKG_NAME}/include",
+                "${PLUGINS_DIR}/Mcu_${AR_PKG_NAME}/include",
+                "${PLUGINS_DIR}/Dem_${AR_PKG_NAME}/include",
+                "${PLUGINS_DIR}/Dio_${AR_PKG_NAME}/include",
+                "${PLUGINS_DIR}/Port_${AR_PKG_NAME}/include",
+                "${PLUGINS_DIR}/Det_${AR_PKG_NAME}/include"
+            ],
+            "defines": [
+                "D_CACHE_ENABLE",
+                "I_CACHE_ENABLE",
+                "BTB_ENABLE",
+                "ENABLE_FPU",
+                "MPU_ENABLE"
+            ],
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}
