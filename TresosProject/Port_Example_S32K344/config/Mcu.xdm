@@ -1,12 +1,13 @@
 <?xml version='1.0'?>
-<datamodel version="7.0" 
-           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
-           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
+<datamodel version="8.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/18/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/18/attribute.xsd" 
            xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
            xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
 
   <d:ctr type="AUTOSAR" factory="autosar" 
          xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:ce="http://www.tresos.de/_projects/DataModel2/18/childenable.xsd" 
          xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
          xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
          xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
@@ -62,6 +63,11 @@
                   <a:a name="IMPORTER_INFO" value="@DEF"/>
                 </d:var>
                 <d:var name="McuPmcNotification" type="FUNCTION-NAME" 
+                       value="NULL_PTR">
+                  <a:a name="ENABLE" value="false"/>
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="McuPmcAeNotification" type="FUNCTION-NAME" 
                        value="NULL_PTR">
                   <a:a name="ENABLE" value="false"/>
                   <a:a name="IMPORTER_INFO" value="@DEF"/>
