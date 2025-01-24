@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.11.4.toolchain.2038311146">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.11.4.toolchain.2038311146" moduleId="org.eclipse.cdt.core.settings" name="Default">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration buildProperties="" id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.11.4.toolchain.2038311146" name="Default" parent="org.eclipse.cdt.build.core.emptycfg">
+					<folderInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.11.4.toolchain.2038311146.518057145" name="/" resourcePath="">
+						<toolChain id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.11.4.toolchain.1144707821" name="NXP GCC 11.4 for Arm 32-bit Bare-Metal" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.11.4.toolchain">
+							<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.11.4.option.compiler.path.1864687871" name="Path" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.11.4.option.compiler.path"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.GNU_ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.316837623" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
+							<builder id="com.freescale.s32ds.cross.gnu.builder.519357426" managedBuildOn="false" name="FSL Make Builder.Default" superClass="com.freescale.s32ds.cross.gnu.builder"/>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.11.4.c.compiler.2075750120" name="Standard S32DS C Compiler" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.11.4.c.compiler">
+								<option id="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.optimization.functionsections.1586799484" superClass="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.optimization.functionsections" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.optimization.datasections.533911005" superClass="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.optimization.datasections" value="true" valueType="boolean"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.880071778" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.11.4.cpp.compiler.2088482608" name="Standard S32DS C++ Compiler" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.11.4.cpp.compiler">
+								<option id="com.freescale.s32ds.cross.gnu.tool.cpp.compiler.option.optimization.functionsections.797567666" superClass="com.freescale.s32ds.cross.gnu.tool.cpp.compiler.option.optimization.functionsections" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.tool.cpp.compiler.option.optimization.datasections.2034510262" superClass="com.freescale.s32ds.cross.gnu.tool.cpp.compiler.option.optimization.datasections" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.9.2.tool.c.linker.1068241078" name="Standard S32DS C Linker" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.9.2.tool.c.linker">
+								<option id="com.freescale.s32ds.cross.gnu.tool.c.linker.option.gcsections.1236275231" superClass="com.freescale.s32ds.cross.gnu.tool.c.linker.option.gcsections" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.9.2.tool.cpp.linker.1456057395" name="Standard S32DS C++ Linker" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.9.2.tool.cpp.linker">
+								<option id="com.freescale.s32ds.cross.gnu.tool.cpp.linker.option.gcsections.2016246666" superClass="com.freescale.s32ds.cross.gnu.tool.cpp.linker.option.gcsections" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.archiver.2054434797" name="Standard S32DS Archiver" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.archiver"/>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.assembler.1592314299" name="Standard S32DS Assembler" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.assembler">
+								<option id="com.freescale.s32ds.cross.gnu.tool.assembler.usepreprocessor.1370249316" superClass="com.freescale.s32ds.cross.gnu.tool.assembler.usepreprocessor" value="true" valueType="boolean"/>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1589813043" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+								<inputType id="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile.1107623218" superClass="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile"/>
+							</tool>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.createflash.1117710267" name="Standard S32DS Create Flash Image" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.createflash"/>
+							<tool id="com.freescale.s32ds.cross.gnu.tool.createlisting.824361535" name="Standard S32DS Create Listing" superClass="com.freescale.s32ds.cross.gnu.tool.createlisting">
+								<option id="com.freescale.s32ds.cross.gnu.option.createlisting.source.1063512145" superClass="com.freescale.s32ds.cross.gnu.option.createlisting.source" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.option.createlisting.allheaders.451219089" superClass="com.freescale.s32ds.cross.gnu.option.createlisting.allheaders" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.option.createlisting.demangle.13293951" superClass="com.freescale.s32ds.cross.gnu.option.createlisting.demangle" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.option.createlisting.linenumbers.501315971" superClass="com.freescale.s32ds.cross.gnu.option.createlisting.linenumbers" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.option.createlisting.wide.1960107410" superClass="com.freescale.s32ds.cross.gnu.option.createlisting.wide" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.printsize.1202079516" name="Standard S32DS Print Size" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.printsize">
+								<option id="com.freescale.s32ds.cross.gnu.option.printsize.format.1846756463" superClass="com.freescale.s32ds.cross.gnu.option.printsize.format"/>
+							</tool>
+							<tool id="com.freescale.s32ds.cross.gnu.c.preprocessor.1688307999" name="Standard S32DS C Preprocessor" superClass="com.freescale.s32ds.cross.gnu.c.preprocessor"/>
+							<tool id="com.freescale.s32ds.cross.gnu.cpp.preprocessor.218060413" name="Standard S32DS C++ Preprocessor" superClass="com.freescale.s32ds.cross.gnu.cpp.preprocessor"/>
+							<tool id="com.freescale.s32ds.cross.gnu.disassembler.2058508665" name="Standard S32DS Disassembler" superClass="com.freescale.s32ds.cross.gnu.disassembler"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="PortExample344_Vscode.null.791056030" name="PortExample344_Vscode"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.11.4.toolchain.2038311146;com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.11.4.toolchain.2038311146.518057145;com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.11.4.c.compiler.2075750120;cdt.managedbuild.tool.gnu.c.compiler.input.880071778">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+</cproject>

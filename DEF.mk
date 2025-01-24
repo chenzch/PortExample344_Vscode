@@ -92,11 +92,13 @@ clean_all_linux:
 	@rm -fr $(ODIR)
 	@rm -fr $(GDIR)
 
-.PHONY: build
+.PHONY: build all
 build: $(ELFNAME).elf # Build the example
 	@${SIZE} $(ODIR)/$(ELFNAME).elf
 	@${OBJCOPY} -O ihex $(ODIR)/$(ELFNAME).elf $(ODIR)/$(ELFNAME).hex
 	@${OBJCOPY} -O srec $(ODIR)/$(ELFNAME).elf $(ODIR)/$(ELFNAME).srec
+
+all: build
 
 $(ELFNAME).elf : $(OUT_FILES)
 #add path for .o and .c filer to easy to automatically look up in sub folder
