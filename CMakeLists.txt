@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 set(CMAKE_PROJECT_NAME "Port_Example_S32K344")
 
-set(S32DS_DIR "C:/NXP/S32DS.3.6")
+set(TOOLCHAIN_PREFIX "C:/NXP/S32DS.3.6/S32DS/build_tools/gcc_v11.4/gcc-11.4-arm32-eabi")
 set(RTD_DIR "C:/Users/peter_chen.WTMEC/SyncData/AUTOSAR/SW32K3_RTD_R21-11_4.0.0_HF_02")
 set(AR_PKG_NAME "TS_T40D34M40I0R0")
 set(MCAL_MODULE_LIST Resource BaseNXP Platform Mcu Dem Dio EcuC Port Det)
@@ -38,9 +38,6 @@ file(GLOB LD_FILE "linker_flash_s32k344.ld")
 # Target definition
 set(CMAKE_SYSTEM_NAME  Generic)
 set(CMAKE_SYSTEM_PROCESSOR ARM)
-
-# Include the toolchain file
-set(TOOLCHAIN_PREFIX "${S32DS_DIR}/S32DS/build_tools/gcc_v11.4/gcc-11.4-arm32-eabi")
 
 set(TOOLCHAIN arm-none-eabi)
 if(NOT DEFINED TOOLCHAIN_PREFIX)
