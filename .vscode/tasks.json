@@ -18,6 +18,12 @@
             "type": "shell",
             "command": "C:\\NXP\\S32DS.3.6\\S32DS\\build_tools\\msys32\\usr\\bin\\make.exe clean",
             "group": "build"
+        },
+        {
+            "label": "cleanall",
+            "type": "shell",
+            "command": "C:\\NXP\\S32DS.3.6\\S32DS\\build_tools\\msys32\\usr\\bin\\make.exe clean_all",
+            "group": "build"
         }
     ]
 }
