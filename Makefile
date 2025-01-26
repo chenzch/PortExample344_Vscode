@@ -1,5 +1,5 @@
 #The name of the elf file
-ELFNAME = PortExample344
+ELFNAME = Port_Example_S32K344
 
 S32DS_DIR = /c/NXP/S32DS.3.6
 
