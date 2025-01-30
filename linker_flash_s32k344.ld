@@ -84,13 +84,16 @@ SECTIONS
         *(.mcal_text.*)
         . = ALIGN(4);
         *(.acmcu_code_rom)
+        *(.acmcu_code_rom.*)
         . = ALIGN(4);
         __acfls_code_rom_start = .;
         *(.acfls_code_rom)
+        *(.acfls_code_rom.*)
         . = ALIGN(4);
         __acfls_code_rom_end = .;
         __acmem_43_infls_code_rom_start = .;
         *(.acmem_43_infls_code_rom)
+        *(.acmem_43_infls_code_rom.*)
         . = ALIGN(4);
         __acmem_43_infls_code_rom_end = .;
         KEEP(*(.init))
@@ -101,8 +104,10 @@ SECTIONS
         *(.rodata*)
         . = ALIGN(4);
         *(.mcal_const_cfg)
+        *(.mcal_const_cfg.*)
         . = ALIGN(4);
         *(.mcal_const)
+        *(.mcal_const.*)
         . = ALIGN(4);
         __init_table = .;
         KEEP(*(.init_table))
@@ -120,6 +125,7 @@ SECTIONS
         . = ALIGN(8);
         __standby_ram_begin__ = .;
         *(.standby_data)
+        *(.standby_data.*)
         . = ALIGN(8);
         __standby_ram_end__ = .;
         . = ALIGN(16);
@@ -139,6 +145,7 @@ SECTIONS
         __sram_data_begin__ = .;
         . = ALIGN(4);
         *(.ramcode)
+        *(.ramcode.*)
         . = ALIGN(4);
         *(.data)
         *(.data*)
@@ -166,9 +173,11 @@ SECTIONS
     {
         __acfls_code_ram_start  = .;
         *(.acfls_code_ram)
+        *(.acfls_code_ram.*)
         __acfls_code_ram_end   = .;
         __acmem_43_infls_code_ram_start = .;
         *(.acmem_43_infls_code_ram)
+        *(.acmem_43_infls_code_ram.*)
         __acmem_43_infls_code_ram_end = .;
     } > int_sram_fls_rsv
 
@@ -179,8 +188,10 @@ SECTIONS
         . = ALIGN(4);
         __non_cacheable_data_start__ = .;
         *(.mcal_data_no_cacheable)
+        *(.mcal_data_no_cacheable.*)
         . = ALIGN(4);
         *(.mcal_const_no_cacheable)
+        *(.mcal_const_no_cacheable.*)
         . = ALIGN(4);
         HSE_LOOP_ADDR = .;
         LONG(0x0);
@@ -203,6 +214,7 @@ SECTIONS
     {
         . = ALIGN(4);
         KEEP(*(.int_results))
+        KEEP(*(.int_results.*))
         . += 0x100;
     } > int_sram_results
 
@@ -213,6 +225,7 @@ SECTIONS
         . = ALIGN(4);
         __shareable_data_start__ = .;
         KEEP(*(.mcal_shared_data))
+        KEEP(*(.mcal_shared_data.*))
         . = ALIGN(4);
         __shareable_data_end__ = .;
     } > int_sram_shareable
@@ -268,6 +281,7 @@ SECTIONS
         . = ALIGN(16);
         __shareable_bss_start = .;
         *(.mcal_shared_bss)
+        *(.mcal_shared_bss.*)
         . = ALIGN(4);
         __shareable_bss_end = .;
     } > int_sram_shareable
