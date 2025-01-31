@@ -7,7 +7,9 @@ set(RTD_DIR "C:/Users/peter_chen.WTMEC/SyncData/AUTOSAR/SW32K3_RTD_R21-11_4.0.0_
 set(AR_PKG_NAME "TS_T40D34M40I0R0")
 set(MCAL_MODULE_LIST Resource BaseNXP Platform Mcu Dem Dio EcuC Port Det)
 
-set(CMAKE_BUILD_TYPE "Debug")
+set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
+set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release")
+
 option(USE_DEFAULT_RTE "Use default RTE" ON)
 option(USE_DEFAULT_STARTUP "Use default RTE" ON)
 
@@ -78,7 +80,7 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 # -ffunction-sections   Place each function item into its own section in the output file.
 # -fdata-sections       Place each data item into its own section in the output file.
 # -fomit-frame-pointer  Omit the frame pointer in functions that don’t need one.
-set(OBJECT_GEN_FLAGS "-pedantic -Wall -Wextra -Wunused -Wstrict-prototypes -Wsign-compare -Werror=implicit-function-declaration -Wundef -Wdouble-promotion -ffunction-sections -fdata-sections -fomit-frame-pointer -funsigned-char -fomit-frame-pointer -fno-short-enums -funsigned-bitfields -fno-common -mcpu=cortex-m7 -mthumb -mlittle-endian -mfloat-abi=hard -mfpu=fpv5-sp-d16 -specs=nano.specs -specs=nosys.specs --sysroot=\"${TOOLCHAIN_LIB_DIR}\"")
+set(OBJECT_GEN_FLAGS "-pedantic -Wall -Wextra -Wunused -Wstrict-prototypes -Wsign-compare -Werror=implicit-function-declaration -Wundef -Wdouble-promotion -ffunction-sections -fdata-sections -fomit-frame-pointer -funsigned-char -fomit-frame-pointer -fno-short-enums -funsigned-bitfields -fno-common -fno-builtin -mcpu=cortex-m7 -mthumb -mlittle-endian -mfloat-abi=hard -mfpu=fpv5-sp-d16 -specs=nano.specs -specs=nosys.specs --sysroot=\"${TOOLCHAIN_LIB_DIR}\"")
 
 set(CMAKE_C_FLAGS   "${OBJECT_GEN_FLAGS} -std=c99 " CACHE INTERNAL "C Compiler options")
 set(CMAKE_CXX_FLAGS "${OBJECT_GEN_FLAGS} -std=c++11 " CACHE INTERNAL "C++ Compiler options")
