@@ -114,6 +114,8 @@ LDOPT := --entry=Reset_Handler \
       --sysroot="$(clib)" \
       $(foreach spec, $(specs), -specs=$(spec)) \
       -nostartfiles \
+      -nostdlib \
+      -nodefaultlibs \
       -mcpu=cortex-m7 \
       -mthumb \
       -mfpu=fpv5-sp-d16 \
@@ -121,11 +123,6 @@ LDOPT := --entry=Reset_Handler \
       -ggdb3 \
       -mlittle-endian \
       -Xlinker --gc-sections
-#      -nostdlib \
-#      -nodefaultlibs \
-#      -lc
-#      -lm
-#      -lgcc
 
 ASOPT := $(ASOPT) \
          -c \
@@ -205,12 +202,12 @@ endif
 
 SEPARATOR:===========================================================
 UNAME_CMD:=uname
-OS_DETECTED:=linux
+OS_DETECTED:=$(shell $(UNAME_CMD))
 mkdir_message:=Creating directory for object files
 clean_message:=Removing files and directories from the compliation output
 clean_all_message:=Removing files and directories from the compliation output and for the generation output
 
-ifeq ($(OS_DETECTED), )
+ifneq ($(OS_DETECTED), Linux)
 mkdir=mkdir_windows
 clean_target=clean_windows
 clean_all_target=clean_all_windows
@@ -253,6 +250,7 @@ clean_linux:
 
 .PHONY: clean_all_windows
 clean_all_windows:
+	@echo "clean_all_windows"
 	@echo $(SEPARATOR)
 	@echo $(clean_all_message)
 	@rmdir /s /q $(ODIR) || @echo Directory already cleaned
@@ -260,6 +258,7 @@ clean_all_windows:
 
 .PHONY: clean_all_linux
 clean_all_linux:
+	@echo "clean_all_linux"
 	@echo $(SEPARATOR)
 	@echo $(clean_all_message)
 	@rm -fr $(ODIR)
