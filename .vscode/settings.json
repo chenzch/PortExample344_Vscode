@@ -1,0 +1,5 @@
+{
+    "cortex-debug.variableUseNaturalFormat": false,
+    "S32DS_ROOT": "C:\\NXP\\S32DS.3.6",
+    "cmake.generator": "Ninja"
+}

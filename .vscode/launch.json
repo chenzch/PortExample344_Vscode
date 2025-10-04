@@ -1,0 +1,34 @@
+{
+    // 使用 IntelliSense 了解相关属性。
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug with JLink",
+            "cwd": "${workspaceFolder}",
+            "executable": "./build/Port_Example_S32K344.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "device": "S32K314",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "servertype": "jlink",
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 4
+            },
+            "interface": "swd",
+            "preLaunchTask": "CMake: 生成",
+            "postRestartCommands": [
+                "load",
+                "monitor reset halt"
+            ],
+            "serverpath": "${config:S32DS_ROOT}\\Drivers\\Segger\\JLinkGDBServerCL.exe",
+            "jlinkscript": "${config:S32DS_ROOT}\\Drivers\\Segger\\JlinkScripts\\S32K3xx\\S32K314.jlinkscript",
+            "svdFile": "${config:S32DS_ROOT}\\S32DS\\software\\PlatformSDK_S32K3\\RTD\\BaseNXP_TS_T40D34M60I0R0\\header\\S32K314_M7.svd",
+            "armToolchainPath": "${config:S32DS_ROOT}\\S32DS\\build_tools\\gcc_v11.4\\gcc-11.4-arm32-eabi\\bin",
+            "gdbPath": "${config:S32DS_ROOT}\\S32DS\\tools\\gdb-arm\\arm32-eabi\\bin\\arm-none-eabi-gdb.exe"
+        }
+    ]
+}
