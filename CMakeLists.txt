@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 set(CMAKE_PROJECT_NAME "Port_Example_S32K344")
+set(LD_FILENAME "linker_flash_s32k344.ld")
 
 if(CMAKE_HOST_SYSTEM_NAME STREQUAL Linux)
     set(RTD_DIR "/mnt/c/Users/peter_chen.WTMEC/SyncData/AUTOSAR/SW32K3_RTD_R21-11_4.0.0_HF_02")
@@ -11,6 +12,8 @@ endif()
 
 set(AR_PKG_NAME "TS_T40D34M40I0R0")
 set(MCAL_MODULE_LIST Resource BaseNXP Platform Mcu Dem Dio EcuC Port Det)
+set(LIBRARY_LIST c m gcc)
+set(LIBRARY_PATH_LIST)
 
 set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release")
@@ -42,7 +45,41 @@ aux_source_directory(generate/src SOURCES)
 include_directories(include)
 include_directories(generate/include)
 
-file(GLOB LD_FILE "linker_flash_s32k344.ld")
+set(LD_CANDIDATES
+    "${CMAKE_SOURCE_DIR}/Project_Settings/Linker_Files/${LD_FILENAME}"
+    "${CMAKE_SOURCE_DIR}/${LD_FILENAME}"
+)
+
+## Find linker script robustly. Try several candidate locations relative to the source dir.
+## Allow user to override linker script location via CMake cache variable.
+# Usage: cmake -DLINKER_SCRIPT="/full/path/to/linker_flash_s32k344.ld" ..
+set(LINKER_SCRIPT "" CACHE FILEPATH "Path to the linker script (overrides auto-search)")
+
+set(LD_FILE "")
+
+# If user provided LINKER_SCRIPT via cache, prefer that (and verify it exists)
+if(LINKER_SCRIPT)
+    if(EXISTS "${LINKER_SCRIPT}")
+        set(LD_FILE "${LINKER_SCRIPT}")
+        message(STATUS "Using linker script from LINKER_SCRIPT: ${LD_FILE}")
+    else()
+        message(FATAL_ERROR "LINKER_SCRIPT is set to '${LINKER_SCRIPT}' but the file does not exist.")
+    endif()
+endif()
+
+if(LD_FILE STREQUAL "")
+    foreach(_ld ${LD_CANDIDATES})
+    if(EXISTS "${_ld}")
+        set(LD_FILE "${_ld}")
+        message(STATUS "Using linker script: ${LD_FILE}")
+        break()
+    endif()
+    endforeach()
+
+    if(LD_FILE STREQUAL "")
+        message(FATAL_ERROR "Linker script not found. Tried the following locations:\n  ${LD_CANDIDATES}\nYou can also specify the path manually when configuring CMake:\n  cmake -DLINKER_SCRIPT=\"/full/path/to/linker_flash_s32k344.ld\" <other args>\nPlease add the linker script to one of these locations or update CMakeLists.txt to point to its actual path.")
+    endif()
+endif()
 
 #---------------------------------------------------------------------------------------
 # Set toolchain
@@ -94,7 +131,7 @@ if(CMAKE_HOST_SYSTEM_NAME STREQUAL Linux)
     add_compile_options(-fplugin=${CMAKE_SOURCE_DIR}/plugin.so)
 endif()
 
-add_compile_options(-pedantic -Wall -Wextra -Wunused -Wstrict-prototypes -Wsign-compare -Werror=implicit-function-declaration -Wundef -Wdouble-promotion -ffunction-sections -fdata-sections -fomit-frame-pointer -funsigned-char -fomit-frame-pointer -fno-short-enums -funsigned-bitfields -fno-common -fno-builtin -mcpu=cortex-m7 -mthumb -mlittle-endian -mfloat-abi=hard -mfpu=fpv5-sp-d16 -specs=nano.specs -specs=nosys.specs --sysroot=\"${TOOLCHAIN_LIB_DIR}\")
+add_compile_options(-pedantic -Wall -Wextra -Wunused -Wstrict-prototypes -Wsign-compare -Werror=implicit-function-declaration -Wundef -Wdouble-promotion -ffunction-sections -fdata-sections -fomit-frame-pointer -funsigned-char -fomit-frame-pointer -fno-short-enums -funsigned-bitfields -fno-common -fno-builtin -mcpu=cortex-m7 -mthumb -mlittle-endian -mfloat-abi=hard -mfpu=fpv5-sp-d16 -specs=nano.specs -specs=nosys.specs --sysroot="${TOOLCHAIN_LIB_DIR}")
 
 set(CMAKE_C_FLAGS   "-std=c99" CACHE INTERNAL "C Compiler options")
 set(CMAKE_CXX_FLAGS "-std=c++11" CACHE INTERNAL "C++ Compiler options")
@@ -137,7 +174,13 @@ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
-add_link_options(-T ${LD_FILE} --entry=Reset_Handler)
+add_link_options(-T "${LD_FILE}" --entry=Reset_Handler)
+foreach(LIB ${LIBRARY_LIST})
+    link_libraries(${LIB})
+endforeach()
+foreach(LIB_PATH ${LIBRARY_PATH_LIST})
+    link_directories(${LIB_PATH})
+endforeach()
 
 set(PLUGINS_DIR "${RTD_DIR}/eclipse/plugins")
 
@@ -147,17 +190,19 @@ foreach(MODULE ${MCAL_MODULE_LIST})
 endforeach()
 include_directories(${PLUGINS_DIR}/BaseNXP_${AR_PKG_NAME}/header)
 include_directories(${PLUGINS_DIR}/BaseNXP_${AR_PKG_NAME}/include)
-include_directories(${PLUGINS_DIR}/Platform_${AR_PKG_NAME}/include)
 include_directories(${PLUGINS_DIR}/Platform_${AR_PKG_NAME}/startup/include)
 
 if(USE_DEFAULT_STARTUP)
     # Using default startup
     message(STATUS "Using default startup")
+    include_directories(${PLUGINS_DIR}/Platform_${AR_PKG_NAME}/startup/include)
     aux_source_directory(${PLUGINS_DIR}/Platform_${AR_PKG_NAME}/startup/src SOURCES)
     aux_source_directory(${PLUGINS_DIR}/Platform_${AR_PKG_NAME}/startup/src/m7 SOURCES)
     aux_asm_source_directory(${PLUGINS_DIR}/Platform_${AR_PKG_NAME}/startup/src/m7/gcc SOURCES)
 else()
     message(STATUS "Using custom startup")
+    aux_source_directory(Project_Settings/Startup_Code SOURCES)
+    aux_asm_source_directory(Project_Settings/Startup_Code SOURCES)
 endif()
 
 if(USE_DEFAULT_RTE)
@@ -170,6 +215,10 @@ if(USE_DEFAULT_RTE)
     include_directories(${PLUGINS_DIR}/Rte_${AR_PKG_NAME}/include)
 else()
     message(STATUS "Using custom RTE")
+    aux_source_directory(RTD/src SOURCES)
+    include_directories(RTD/include)
+    aux_source_directory(board SOURCES)
+    include_directories(board)
 endif()
 
 # Set the project name
