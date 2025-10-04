@@ -12,6 +12,7 @@ else()
 endif()
 
 set(PLUGINS_DIR "${RTD_DIR}/eclipse/plugins")
+set(PLUGINS_DIR_ADD "${RTD_DIR_ADD}")
 set(AR_PKG_NAME "TS_T40D34M40I0R0")
 set(MCAL_MODULE_LIST Resource BaseNXP Platform Mcu Dem Dio EcuC Port Det)
 set(MCAL_MODULE_LIST_ADD)
